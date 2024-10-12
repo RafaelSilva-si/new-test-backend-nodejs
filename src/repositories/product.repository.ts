@@ -9,14 +9,14 @@ export class ProductRepository {
     };
   }
 
-  async findById(id: string): Promise<Product | null> {
+  async findById(id: string, ownerId: string): Promise<Product | null> {
     return {
       id,
       title: 'Teste',
       description: 'Teste',
       price: 1,
       category: 'Teste',
-      ownerId: '1',
+      ownerId: ownerId,
     };
   }
 }

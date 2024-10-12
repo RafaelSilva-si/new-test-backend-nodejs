@@ -14,7 +14,8 @@ export class AssociateCategoryProductService {
     }
 
     const product = await this.productRepository.findById(
-      associateCategoryProductDto.productId
+      associateCategoryProductDto.productId,
+      associateCategoryProductDto.ownerId
     );
 
     if (!product) {
