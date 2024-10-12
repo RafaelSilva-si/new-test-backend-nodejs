@@ -1,13 +1,19 @@
+import { CategoryRepository } from '../../repositories/category.repository';
 import { ProductRepository } from '../../repositories/product.repository';
 import { AssociateCategoryProductService } from './associate-category-product.service';
 
 describe('Associate Category Product', () => {
   let productRepository: ProductRepository;
+  let categoryRepository: CategoryRepository;
   let associateCategoryProductService: AssociateCategoryProductService;
+
   beforeEach(() => {
     productRepository = new ProductRepository();
+    categoryRepository = new CategoryRepository();
+
     associateCategoryProductService = new AssociateCategoryProductService(
-      productRepository
+      productRepository,
+      categoryRepository
     );
   });
 
@@ -35,5 +41,19 @@ describe('Associate Category Product', () => {
     await expect(
       associateCategoryProductService.execute(requestData as any)
     ).rejects.toThrow('Product not found');
+  });
+
+  it('should returns error if categoryId not found', async () => {
+    const requestData = {
+      productId: '1',
+      categoryId: '1',
+      ownerId: '1',
+    };
+
+    jest.spyOn(categoryRepository, 'findById').mockResolvedValue(null);
+
+    await expect(
+      associateCategoryProductService.execute(requestData as any)
+    ).rejects.toThrow('Category not found');
   });
 });
