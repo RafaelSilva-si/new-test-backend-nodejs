@@ -8,4 +8,13 @@ export class CategoryRepository {
       ...createCategoryDto,
     };
   }
+
+  async findById(id: string, ownerId: string): Promise<Category | null> {
+    return {
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      ownerId: ownerId,
+    };
+  }
 }
