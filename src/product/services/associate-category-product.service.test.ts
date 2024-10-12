@@ -1,5 +1,7 @@
-import { CategoryRepository } from '../../repositories/category.repository';
-import { ProductRepository } from '../../repositories/product.repository';
+import {
+  CategoryRepository,
+  ProductRepository,
+} from '../../repositories/index.repository';
 import { AssociateCategoryProductService } from './associate-category-product.service';
 
 describe('Associate Category Product', () => {

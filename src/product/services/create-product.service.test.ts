@@ -1,4 +1,4 @@
-import { ProductRepository } from '../../repositories/product.repository';
+import { ProductRepository } from '../../repositories/index.repository';
 import { CreateProductService } from './create-product.service';
 
 describe('Create Product', () => {

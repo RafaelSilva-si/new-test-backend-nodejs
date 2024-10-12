@@ -1,5 +1,5 @@
-import { MissingParamError } from '../../errors/throw-missing-param.error';
-import { ProductRepository } from '../../repositories/product.repository';
+import { MissingParamError } from '../../errors/index.error';
+import { ProductRepository } from '../../repositories/index.repository';
 import { CreateProductDto } from '../types/create-product-dto';
 import { Product } from '../types/product.type';
 

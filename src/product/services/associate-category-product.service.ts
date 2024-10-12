@@ -1,7 +1,9 @@
-import { MissingParamError } from '../../errors/throw-missing-param.error';
-import { NotFoundError } from '../../errors/throw-not-found.error';
-import { CategoryRepository } from '../../repositories/category.repository';
-import { ProductRepository } from '../../repositories/product.repository';
+import { MissingParamError, NotFoundError } from '../../errors/index.error';
+import {
+  CategoryRepository,
+  ProductRepository,
+} from '../../repositories/index.repository';
+import { AssociateCategoryProductDto } from '../types/associate-category-product.dto';
 
 export class AssociateCategoryProductService {
   constructor(
@@ -9,10 +11,16 @@ export class AssociateCategoryProductService {
     readonly categoryRepository: CategoryRepository
   ) {}
 
-  async execute(associateCategoryProductDto: any) {
+  async execute(
+    associateCategoryProductDto: AssociateCategoryProductDto
+  ): Promise<void> {
     const requiredFields = ['productId', 'categoryId', 'ownerId'];
     for (const field of requiredFields) {
-      if (associateCategoryProductDto[field as keyof any] === undefined) {
+      if (
+        associateCategoryProductDto[
+          field as keyof AssociateCategoryProductDto
+        ] === undefined
+      ) {
         throw new MissingParamError(field);
       }
     }
