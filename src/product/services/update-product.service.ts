@@ -22,6 +22,6 @@ export class UpdateProductService {
     if (!product) {
       throw new NotFoundError('Product not found');
     }
-    return updateProductDto;
+    return await this.productRepository.update(updateProductDto);
   }
 }
