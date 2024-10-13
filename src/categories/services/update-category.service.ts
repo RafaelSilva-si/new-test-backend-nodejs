@@ -25,6 +25,6 @@ export class UpdateCategoryService {
       throw new NotFoundError('Category not found');
     }
 
-    return updateCategoryDto;
+    return await this.categoryRepository.update(updateCategoryDto);
   }
 }
