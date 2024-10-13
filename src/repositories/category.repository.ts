@@ -1,5 +1,6 @@
 import { Category } from '../categories/types/category.type';
 import { CreateCategoryDto } from '../categories/types/create-category.dto';
+import { UpdateCategoryDto } from '../categories/types/update-category.dto';
 
 export class CategoryRepository {
   async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
@@ -15,6 +16,15 @@ export class CategoryRepository {
       title: 'Teste',
       description: 'Teste',
       ownerId: ownerId,
+    };
+  }
+
+  async update(updateCategoryDto: UpdateCategoryDto): Promise<Category> {
+    return {
+      id: updateCategoryDto.id,
+      title: updateCategoryDto.title,
+      description: updateCategoryDto.description,
+      ownerId: updateCategoryDto.ownerId,
     };
   }
 }
