@@ -1,15 +1,19 @@
+import { ProductRepository } from '../../repositories/product.repository';
 import { UpdateProductService } from './update-product.service';
 
 describe('Update Product', () => {
   let updateProductService: UpdateProductService;
+  let productRepository: ProductRepository;
 
   beforeEach(() => {
-    updateProductService = new UpdateProductService();
+    productRepository = new ProductRepository();
+
+    updateProductService = new UpdateProductService(productRepository);
   });
 
   it('should returns error if fields are missing', async () => {
-    const requestId = '1';
     const requestData = {
+      id: '1',
       title: '',
       description: 'Teste',
       price: 1,
@@ -18,7 +22,24 @@ describe('Update Product', () => {
     };
 
     await expect(
-      updateProductService.execute(requestId, requestData as any)
+      updateProductService.execute(requestData as any)
     ).rejects.toThrow('Missing param: ownerId');
+  });
+
+  it("should returns error if product doesn't exists", async () => {
+    const requestData = {
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      price: 1,
+      category: 'Teste',
+      ownerId: 'teste',
+    };
+
+    jest.spyOn(productRepository, 'findById').mockResolvedValueOnce(null);
+
+    await expect(
+      updateProductService.execute(requestData as any)
+    ).rejects.toThrow('Product not found');
   });
 });
