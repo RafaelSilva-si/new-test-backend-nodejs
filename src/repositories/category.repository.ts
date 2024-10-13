@@ -27,4 +27,8 @@ export class CategoryRepository {
       ownerId: updateCategoryDto.ownerId,
     };
   }
+
+  async delete(id: string): Promise<boolean> {
+    return true;
+  }
 }
