@@ -22,6 +22,6 @@ export class DeleteCategoryService {
       throw new NotFoundError('Category not found');
     }
 
-    return true;
+    return await this.categoryRepository.delete(deleteCategoryDto.id);
   }
 }
