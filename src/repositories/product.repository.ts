@@ -45,4 +45,8 @@ export class ProductRepository {
       ownerId: updateProductDto.ownerId,
     };
   }
+
+  async delete(id: string): Promise<boolean> {
+    return true;
+  }
 }
