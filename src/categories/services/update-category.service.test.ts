@@ -37,4 +37,22 @@ describe('Update Product', () => {
       updateCategoryService.execute(requestData as any)
     ).rejects.toThrow('Category not found');
   });
+
+  it('should update a category if all fields are provided', async () => {
+    const requestData = {
+      id: '1',
+      title: 'Teste',
+      description: 'Teste2',
+      ownerId: 'teste',
+    };
+
+    const result = await updateCategoryService.execute(requestData);
+
+    expect(result).toMatchObject({
+      id: '1',
+      title: 'Teste',
+      description: 'Teste2',
+      ownerId: 'teste',
+    });
+  });
 });
