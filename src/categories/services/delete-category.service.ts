@@ -1,4 +1,5 @@
 import { MissingParamError } from '../../errors/throw-missing-param.error';
+import { NotFoundError } from '../../errors/throw-not-found.error';
 import { CategoryRepository } from '../../repositories/category.repository';
 
 export class DeleteCategoryService {
@@ -10,6 +11,15 @@ export class DeleteCategoryService {
       if (deleteCategoryDto[field] === undefined) {
         throw new MissingParamError(field);
       }
+    }
+
+    const category = await this.categoryRepository.findById(
+      deleteCategoryDto.id,
+      deleteCategoryDto.ownerId
+    );
+
+    if (!category) {
+      throw new NotFoundError('Category not found');
     }
 
     return true;
