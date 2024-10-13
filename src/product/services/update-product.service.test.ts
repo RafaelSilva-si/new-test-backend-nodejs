@@ -42,4 +42,35 @@ describe('Update Product', () => {
       updateProductService.execute(requestData as any)
     ).rejects.toThrow('Product not found');
   });
+
+  it('should update a product if all fields are provided', async () => {
+    const requestData = {
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      price: 1,
+      category: 'Teste2',
+      ownerId: 'teste',
+    };
+
+    jest.spyOn(productRepository, 'findById').mockResolvedValueOnce({
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      price: 1,
+      category: 'Teste',
+      ownerId: 'teste',
+    });
+
+    await expect(
+      updateProductService.execute(requestData as any)
+    ).resolves.toMatchObject({
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      price: 1,
+      category: 'Teste2',
+      ownerId: 'teste',
+    });
+  });
 });
