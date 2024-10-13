@@ -34,4 +34,15 @@ describe('Delete Category', () => {
       deleteCategoryService.execute(requestData as any)
     ).rejects.toThrow('Category not found');
   });
+
+  it('should delete a category', async () => {
+    const requestData = {
+      id: '1',
+      ownerId: 'teste',
+    };
+
+    const result = await deleteCategoryService.execute(requestData as any);
+
+    expect(result).toBeTruthy();
+  });
 });
