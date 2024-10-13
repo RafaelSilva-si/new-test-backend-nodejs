@@ -1,3 +1,5 @@
 import { CreateProductDto } from './create-product-dto';
 
-export interface UpdateProductDto extends CreateProductDto {}
+export interface UpdateProductDto extends CreateProductDto {
+  id: string;
+}
