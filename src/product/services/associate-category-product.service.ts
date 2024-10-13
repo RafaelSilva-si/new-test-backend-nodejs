@@ -4,6 +4,7 @@ import {
   ProductRepository,
 } from '../../repositories/index.repository';
 import { AssociateCategoryProductDto } from '../types/associate-category-product.dto';
+import { Product } from '../types/product.type';
 
 export class AssociateCategoryProductService {
   constructor(
@@ -13,7 +14,7 @@ export class AssociateCategoryProductService {
 
   async execute(
     associateCategoryProductDto: AssociateCategoryProductDto
-  ): Promise<void> {
+  ): Promise<Product> {
     const requiredFields = ['productId', 'categoryId', 'ownerId'];
     for (const field of requiredFields) {
       if (
@@ -42,5 +43,9 @@ export class AssociateCategoryProductService {
     if (!category) {
       throw new NotFoundError('Category not found');
     }
+
+    return await this.productRepository.associateCategory(
+      associateCategoryProductDto
+    );
   }
 }
