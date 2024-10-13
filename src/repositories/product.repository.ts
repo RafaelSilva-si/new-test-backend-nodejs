@@ -1,3 +1,4 @@
+import { AssociateCategoryProductDto } from '../product/types/associate-category-product.dto';
 import { CreateProductDto } from '../product/types/create-product-dto';
 import { Product } from '../product/types/product.type';
 
@@ -15,8 +16,21 @@ export class ProductRepository {
       title: 'Teste',
       description: 'Teste',
       price: 1,
-      category: 'Teste',
+      category: '1',
       ownerId: ownerId,
+    };
+  }
+
+  async associateCategory(
+    associateCategoryProductDto: AssociateCategoryProductDto
+  ): Promise<Product> {
+    return {
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      price: 1,
+      category: associateCategoryProductDto.categoryId,
+      ownerId: '1',
     };
   }
 }
