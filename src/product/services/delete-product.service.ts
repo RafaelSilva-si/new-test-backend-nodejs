@@ -4,7 +4,7 @@ import { ProductRepository } from '../../repositories/product.repository';
 export class DeleteProductService {
   constructor(private readonly productRepository: ProductRepository) {}
 
-  async execute(deleteProductDto: any): Promise<void> {
+  async execute(deleteProductDto: any): Promise<boolean> {
     const requiredFields = ['id', 'ownerId'];
 
     for (const field of requiredFields) {
@@ -21,5 +21,7 @@ export class DeleteProductService {
     if (!product) {
       throw new MissingParamError('Product not found');
     }
+
+    return await this.productRepository.delete(deleteProductDto.id);
   }
 }
