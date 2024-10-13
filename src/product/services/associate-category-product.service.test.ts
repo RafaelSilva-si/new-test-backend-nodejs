@@ -58,4 +58,25 @@ describe('Associate Category Product', () => {
       associateCategoryProductService.execute(requestData as any)
     ).rejects.toThrow('Category not found');
   });
+
+  it('should associate a category to a product', async () => {
+    const requestData = {
+      productId: '1',
+      categoryId: '1',
+      ownerId: '1',
+    };
+
+    jest.spyOn(productRepository, 'findById').mockResolvedValue({
+      id: '1',
+      title: 'Teste',
+      description: 'Teste',
+      price: 1,
+      category: '1',
+      ownerId: '1',
+    });
+
+    const result = await associateCategoryProductService.execute(requestData);
+
+    expect(result.category).toBe(requestData.categoryId);
+  });
 });
