@@ -34,4 +34,17 @@ describe('Delete Product', () => {
       deleteProductService.execute(requestData as any)
     ).rejects.toThrow('Product not found');
   });
+
+  it('should delete a product', async () => {
+    const requestData = {
+      id: '1',
+      ownerId: 'teste',
+    };
+
+    jest.spyOn(productRepository, 'delete').mockResolvedValue(true);
+
+    const result = await deleteProductService.execute(requestData);
+
+    await expect(result).toBe(true);
+  });
 });
