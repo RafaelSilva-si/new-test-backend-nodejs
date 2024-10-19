@@ -1,3 +1,4 @@
+import { MissingParamError } from '../errors/throw-missing-param.error';
 import { ProductRepository } from '../repositories/product.repository';
 import { FindAllProductService } from '../services/product/find-all-product.service';
 import { mockProducts } from '../services/product/find-all-product.service.test';
@@ -30,6 +31,24 @@ describe('Product controller', () => {
     expect(results).toStrictEqual({
       statusCode: 200,
       results: mockProducts,
+    });
+  });
+
+  it('should findall returns throw if error', async () => {
+    jest
+      .spyOn(findAllProductService, 'execute')
+      .mockRejectedValue(new MissingParamError('id'));
+
+    const result = await productController.findAll(
+      {
+        query: { ownerId: '123' },
+      },
+      {}
+    );
+
+    expect(result).toStrictEqual({
+      statusCode: 400,
+      error: 'Missing param: id',
     });
   });
 });
