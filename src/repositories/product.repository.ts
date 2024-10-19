@@ -4,7 +4,7 @@ import { Product } from '../types/product/product.type';
 import { UpdateProductDto } from '../types/product/update-product-dto';
 
 export class ProductRepository {
-  async findAll(): Promise<Product[]> {
+  async findAll(ownerId: string): Promise<Product[]> {
     return [];
   }
 
