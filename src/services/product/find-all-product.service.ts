@@ -4,7 +4,7 @@ import { Product } from '../../types/product/product.type';
 export class FindAllProductService {
   constructor(private readonly productRepository: ProductRepository) {}
 
-  execute(): Promise<Product[]> {
-    return this.productRepository.findAll();
+  execute(ownerId: string): Promise<Product[]> {
+    return this.productRepository.findAll(ownerId);
   }
 }
