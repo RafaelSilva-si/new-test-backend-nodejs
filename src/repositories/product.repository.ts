@@ -4,6 +4,10 @@ import { Product } from '../product/types/product.type';
 import { UpdateProductDto } from '../product/types/update-product-dto';
 
 export class ProductRepository {
+  async findAll(): Promise<Product[]> {
+    return [];
+  }
+
   async create(createProductDto: CreateProductDto): Promise<Product> {
     return {
       id: '1',
