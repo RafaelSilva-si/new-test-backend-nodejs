@@ -39,13 +39,18 @@ describe('FindAll Product Service', () => {
   });
 
   it('should return all data', async () => {
+    const ownerId = '123';
+    const filteredProducts = mockProducts.filter(
+      (product) => product.ownerId === ownerId
+    );
+
     jest
       .spyOn(findAllProductService, 'execute')
-      .mockResolvedValue(mockProducts);
+      .mockResolvedValue(filteredProducts);
 
-    const result = await findAllProductService.execute();
+    const result = await findAllProductService.execute(ownerId);
 
-    expect(result).toBe(mockProducts);
-    expect(result.length).toBe(3);
+    expect(result).toBe(filteredProducts);
+    expect(result.length).toBe(1);
   });
 });
