@@ -1,7 +1,7 @@
 import { MissingParamError } from '../../errors/index.error';
 import { ProductRepository } from '../../repositories/index.repository';
-import { CreateProductDto } from '../types/create-product-dto';
-import { Product } from '../types/product.type';
+import { CreateProductDto } from '../../types/product/create-product-dto';
+import { Product } from '../../types/product/product.type';
 
 export class CreateProductService {
   constructor(readonly productRepository: ProductRepository) {}

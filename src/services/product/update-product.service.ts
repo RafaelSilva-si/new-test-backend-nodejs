@@ -1,7 +1,7 @@
 import { MissingParamError } from '../../errors/throw-missing-param.error';
 import { NotFoundError } from '../../errors/throw-not-found.error';
 import { ProductRepository } from '../../repositories/product.repository';
-import { UpdateProductDto } from '../types/update-product-dto';
+import { UpdateProductDto } from '../../types/product/update-product-dto';
 
 export class UpdateProductService {
   constructor(private readonly productRepository: ProductRepository) {}

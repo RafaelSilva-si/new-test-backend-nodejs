@@ -1,7 +1,7 @@
 import { MissingParamError } from '../../errors/throw-missing-param.error';
 import { CategoryRepository } from '../../repositories/category.repository';
-import { Category } from '../types/category.type';
-import { CreateCategoryDto } from '../types/create-category.dto';
+import { Category } from '../../types/categories/category.type';
+import { CreateCategoryDto } from '../../types/categories/create-category.dto';
 
 export class CreateCategoryService {
   constructor(readonly categoryRepository: CategoryRepository) {}

@@ -1,7 +1,7 @@
-import { AssociateCategoryProductDto } from '../product/types/associate-category-product.dto';
-import { CreateProductDto } from '../product/types/create-product-dto';
-import { Product } from '../product/types/product.type';
-import { UpdateProductDto } from '../product/types/update-product-dto';
+import { AssociateCategoryProductDto } from '../types/product/associate-category-product.dto';
+import { CreateProductDto } from '../types/product/create-product-dto';
+import { Product } from '../types/product/product.type';
+import { UpdateProductDto } from '../types/product/update-product-dto';
 
 export class ProductRepository {
   async findAll(): Promise<Product[]> {

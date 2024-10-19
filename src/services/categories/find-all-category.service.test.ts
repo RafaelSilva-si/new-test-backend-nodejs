@@ -1,5 +1,5 @@
 import { CategoryRepository } from '../../repositories/category.repository';
-import { Category } from '../types/category.type';
+import { Category } from '../../types/categories/category.type';
 import { FindAllCategoryService } from './find-all-category.service';
 
 export const mockCategories: Category[] = [

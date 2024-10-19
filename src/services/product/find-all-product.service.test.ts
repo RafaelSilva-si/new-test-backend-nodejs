@@ -1,5 +1,5 @@
 import { ProductRepository } from '../../repositories/product.repository';
-import { Product } from '../types/product.type';
+import { Product } from '../../types/product/product.type';
 import { FindAllProductService } from './find-all-product.service';
 
 export const mockProducts: Product[] = [

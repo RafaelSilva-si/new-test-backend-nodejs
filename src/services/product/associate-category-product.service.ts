@@ -3,8 +3,8 @@ import {
   CategoryRepository,
   ProductRepository,
 } from '../../repositories/index.repository';
-import { AssociateCategoryProductDto } from '../types/associate-category-product.dto';
-import { Product } from '../types/product.type';
+import { AssociateCategoryProductDto } from '../../types/product/associate-category-product.dto';
+import { Product } from '../../types/product/product.type';
 
 export class AssociateCategoryProductService {
   constructor(

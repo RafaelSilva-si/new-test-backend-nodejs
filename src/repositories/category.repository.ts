@@ -1,6 +1,6 @@
-import { Category } from '../categories/types/category.type';
-import { CreateCategoryDto } from '../categories/types/create-category.dto';
-import { UpdateCategoryDto } from '../categories/types/update-category.dto';
+import { Category } from '../types/categories/category.type';
+import { CreateCategoryDto } from '../types/categories/create-category.dto';
+import { UpdateCategoryDto } from '../types/categories/update-category.dto';
 
 export class CategoryRepository {
   async findAll(): Promise<Category[]> {

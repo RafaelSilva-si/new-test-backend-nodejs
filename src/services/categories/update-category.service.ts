@@ -1,8 +1,8 @@
 import { MissingParamError } from '../../errors/throw-missing-param.error';
 import { NotFoundError } from '../../errors/throw-not-found.error';
 import { CategoryRepository } from '../../repositories/category.repository';
-import { Category } from '../types/category.type';
-import { UpdateCategoryDto } from '../types/update-category.dto';
+import { Category } from '../../types/categories/category.type';
+import { UpdateCategoryDto } from '../../types/categories/update-category.dto';
 
 export class UpdateCategoryService {
   constructor(private readonly categoryRepository: CategoryRepository) {}
