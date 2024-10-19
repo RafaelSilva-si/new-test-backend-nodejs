@@ -4,13 +4,19 @@ export class ProductController {
   constructor(private readonly findAllProductService: FindAllProductService) {}
 
   async findAll(req: any, res: any) {
-    const ownerId = req.query.ownerId;
+    try {
+      const ownerId = req.query.ownerId;
+      const results = await this.findAllProductService.execute(ownerId);
 
-    const results = await this.findAllProductService.execute(ownerId);
-
-    return {
-      statusCode: 200,
-      results,
-    };
+      return {
+        statusCode: 200,
+        results,
+      };
+    } catch (error: any) {
+      return {
+        statusCode: error.statusCode,
+        error: error.message,
+      };
+    }
   }
 }
