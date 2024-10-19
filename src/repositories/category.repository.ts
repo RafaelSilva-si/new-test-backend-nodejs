@@ -3,6 +3,10 @@ import { CreateCategoryDto } from '../categories/types/create-category.dto';
 import { UpdateCategoryDto } from '../categories/types/update-category.dto';
 
 export class CategoryRepository {
+  async findAll(): Promise<Category[]> {
+    return [];
+  }
+
   async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
     return {
       id: '1',
